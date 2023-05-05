@@ -9,7 +9,7 @@ function Character(name, type) {
     throw new Error('Имя должно быть длиннее 2 символов и короче 10');
   }
 
-  let objCaracters = {
+  const objCaracters = {
     Bowman: [25, 25],
     Swordsman: [40, 10],
     Magician: [10, 40],
@@ -31,9 +31,13 @@ function Character(name, type) {
   [this.attack, this.defense] = objCaracters[this.type];
 }
 
-// const Ivan = new Character('Ivan', 'Magician');
-// console.log(Ivan);
-// const Igor = new Character('I', 'Magician');
-// console.log(Igor);
+Character.prototype.damage = function (points) {
+  const damageHealth = points * (1 - this.defense / 100);
+  if (this.health > 0 && damageHealth < this.health) {
+    this.health -= points * (1 - this.defense / 100);
+  } else {
+    this.health = 0;
+  }
+};
 
 export default Character;
