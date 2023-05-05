@@ -9,7 +9,7 @@ function Character(name, type) {
     throw new Error('Имя должно быть длиннее 2 символов и короче 10');
   }
 
-  let objCaracters = {
+  const objCaracters = {
     Bowman: [25, 25],
     Swordsman: [40, 10],
     Magician: [10, 40],
