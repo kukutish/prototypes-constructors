@@ -31,9 +31,13 @@ function Character(name, type) {
   [this.attack, this.defense] = objCaracters[this.type];
 }
 
-// const Ivan = new Character('Ivan', 'Magician');
-// console.log(Ivan);
-// const Igor = new Character('I', 'Magician');
-// console.log(Igor);
+Character.prototype.damage = function (points) {
+  const damageHealth = points * (1 - this.defense / 100);
+  if (this.health > 0 && damageHealth < this.health) {
+    this.health -= points * (1 - this.defense / 100);
+  } else {
+    this.health = 0;
+  }
+};
 
 export default Character;
